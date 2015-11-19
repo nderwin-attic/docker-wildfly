@@ -20,7 +20,7 @@ RUN	/opt/wildfly/bin/add-user.sh dockerfly dockerfly --silent
 RUN	apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 # allow the Wildfly server ports to be seen
-EXPOSE	9990 9993 8009 8080 8443 3528 3529 4712 4713
+EXPOSE	4712 4713 8009 8080 8443 9990 9993
 
 # run as the wildfly user
 USER	wildfly
