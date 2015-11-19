@@ -1,9 +1,9 @@
-FROM	nderwin/docker-jre:8u51
+FROM	nderwin/docker-jre:8u66
 
 MAINTAINER	Nathan Erwin <nathan.d.erwin@gmail.com>
 
 # install Wildfly
-ENV	WILDFLY_VERSION 9.0.0.Final
+ENV	WILDFLY_VERSION 9.0.2.Final
 ENV	JBOSS_HOME /opt/wildfly
 
 RUN	cd /opt && curl http://download.jboss.org/wildfly/$WILDFLY_VERSION/wildfly-$WILDFLY_VERSION.tar.gz | tar zx
