@@ -1,6 +1,6 @@
-## Base Docker Image
+## Docker Wildfly 
 
-This image creates the base operating system.  It is currently set to the Debian jessie release.
+This container contains an instance of Wildfly.
 
 ## Building
 
