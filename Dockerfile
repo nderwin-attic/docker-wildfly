@@ -1,6 +1,6 @@
 FROM	nderwin/docker-jre:8u112
 
-MAINTAINER	Nathan Erwin <nathan.d.erwin@gmail.com>
+LABEL	Author="Nathan Erwin <nathan.d.erwin@gmail.com>"
 
 # install Wildfly
 ENV	WILDFLY_VERSION 10.1.0.Final
