@@ -12,4 +12,4 @@ fi
 
 echo
 
-docker build --build-arg ADMIN_USER=$ADMIN_USER --build-arg ADMIN_PASS=$ADMIN_PASS --rm=true --tag="nderwin/docker-wildfly:latest" .
+docker build --build-arg ADMIN_USER=$ADMIN_USER --build-arg ADMIN_PASS=$ADMIN_PASS --rm=true --tag="nderwin/docker-wildfly:10.1.0.Final.1" .
