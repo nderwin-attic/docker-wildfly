@@ -1,6 +1,10 @@
-FROM	nderwin/docker-jre:8u112
+FROM	nderwin/docker-jre:8u131
 
 LABEL	Author="Nathan Erwin <nathan.d.erwin@gmail.com>"
+
+# build arguments
+ARG	ADMIN_USER
+ARG	ADMIN_PASS
 
 # install Wildfly
 ENV	WILDFLY_VERSION 10.1.0.Final
@@ -14,7 +18,7 @@ RUN	groupadd -r wildfly && useradd -r -g wildfly -d /opt/wildfly -s /sbin/nologi
 RUN	chown -R wildfly:wildfly /opt/wildfly*
 
 # Create a management user in Wildfly
-RUN	/opt/wildfly/bin/add-user.sh dockerfly dockerfly --silent
+RUN	/opt/wildfly/bin/add-user.sh $ADMIN_USER $ADMIN_PASS --silent
 
 # housekeeping
 RUN	apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
