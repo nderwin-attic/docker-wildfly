@@ -1,4 +1,4 @@
-FROM	nderwin/docker-jre:8u131
+FROM	nderwin/docker-jre:8u131.1
 
 LABEL	Author="Nathan Erwin <nathan.d.erwin@gmail.com>"
 
@@ -10,18 +10,14 @@ ARG	ADMIN_PASS
 ENV	WILDFLY_VERSION 10.1.0.Final
 ENV	JBOSS_HOME /opt/wildfly
 
-RUN	cd /opt && curl http://download.jboss.org/wildfly/$WILDFLY_VERSION/wildfly-$WILDFLY_VERSION.tar.gz | tar zx
-RUN	ln -s /opt/wildfly-$WILDFLY_VERSION /opt/wildfly
-
 # Create a user so Wildfly does not run as root
-RUN	groupadd -r wildfly && useradd -r -g wildfly -d /opt/wildfly -s /sbin/nologin -c "WildFly user" wildfly
-RUN	chown -R wildfly:wildfly /opt/wildfly*
-
 # Create a management user in Wildfly
-RUN	/opt/wildfly/bin/add-user.sh $ADMIN_USER $ADMIN_PASS --silent
-
-# housekeeping
-RUN	apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
+RUN	cd /opt && curl http://download.jboss.org/wildfly/$WILDFLY_VERSION/wildfly-$WILDFLY_VERSION.tar.gz | tar zx \
+	&& ln -s /opt/wildfly-$WILDFLY_VERSION /opt/wildfly \
+	&& groupadd -r wildfly && useradd -r -g wildfly -d /opt/wildfly -s /sbin/nologin -c "WildFly user" wildfly \
+	&& chown -R wildfly:wildfly /opt/wildfly* \
+	&& /opt/wildfly/bin/add-user.sh $ADMIN_USER $ADMIN_PASS --silent \
+	&& apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 # allow the Wildfly server ports to be seen
 EXPOSE	4712 4713 8009 8080 8443 9990 9993
