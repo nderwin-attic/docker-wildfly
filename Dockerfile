@@ -1,4 +1,4 @@
-FROM	nderwin/docker-jre:8u131.1
+FROM	nderwin/docker-jre:8u141
 
 LABEL	Author="Nathan Erwin <nathan.d.erwin@gmail.com>"
 
@@ -12,7 +12,8 @@ ENV	JBOSS_HOME /opt/wildfly
 
 # Create a user so Wildfly does not run as root
 # Create a management user in Wildfly
-RUN	cd /opt && curl http://download.jboss.org/wildfly/$WILDFLY_VERSION/wildfly-$WILDFLY_VERSION.tar.gz | tar zx \
+RUN	cd /opt \
+	&& curl http://download.jboss.org/wildfly/$WILDFLY_VERSION/wildfly-$WILDFLY_VERSION.tar.gz | tar zx \
 	&& ln -s /opt/wildfly-$WILDFLY_VERSION /opt/wildfly \
 	&& groupadd -r wildfly && useradd -r -g wildfly -d /opt/wildfly -s /sbin/nologin -c "WildFly user" wildfly \
 	&& chown -R wildfly:wildfly /opt/wildfly* \

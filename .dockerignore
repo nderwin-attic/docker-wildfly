@@ -1,4 +1,3 @@
 .git
-run.sh
-build.sh
+docker-compose.yml
 README.md
