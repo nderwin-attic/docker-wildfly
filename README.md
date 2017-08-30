@@ -4,7 +4,7 @@ This image creates a basic instance of Wildfly with all of the default ports exp
 
 ## Building
 
-`docker-compose build --build-arg ADMIN_USER=uzer --build-arg ADMIN_PASS=pazz wildfly` where `uzer` and `pazz` are the credentials for the Wildfly admin user
+`docker-compose build --force-rm --build-arg ADMIN_USER=uzer --build-arg ADMIN_PASS=pazz wildfly` where `uzer` and `pazz` are the credentials for the Wildfly admin user
 
 ## Running
 
