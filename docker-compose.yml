@@ -9,7 +9,7 @@ services:
               ADMIN_PASS: dockerfly
         image: nderwin/docker-wildfly:latest
         container_name: docker-wildfly
-        hostname: docker-wildfly
+        network_mode: "host"
         ports:
           - "8080:8080"
           - "9990:9990"
