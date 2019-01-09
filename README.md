@@ -1,3 +1,7 @@
+## Deprecated
+
+There are now better base images, so this project is no longer needed.
+
 ## Docker Wildfly 
 
 This image creates a basic instance of Wildfly with all of the default ports exposed.
